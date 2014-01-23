@@ -1,2 +1,2 @@
-require './hi'
+require './main'
 run Sinatra::Application
