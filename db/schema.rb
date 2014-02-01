@@ -10,13 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129125418) do
+ActiveRecord::Schema.define(version: 20140201090131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "sources", primary_key: "sourceID", force: true do |t|
+  create_table "histories", force: true do |t|
+    t.integer "sources_id"
+    t.integer "topics_id"
+    t.integer "users_id"
+    t.text    "source_article_id"
+    t.integer "favorites"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer "users_id"
+    t.integer "likable_id"
+    t.string  "likable_type"
+    t.text    "like_value"
+  end
+
+  create_table "sources", force: true do |t|
     t.text "name"
+  end
+
+  create_table "topics", force: true do |t|
+    t.text "name"
+  end
+
+  create_table "users", force: true do |t|
+    t.text "email"
+    t.text "password"
   end
 
 end

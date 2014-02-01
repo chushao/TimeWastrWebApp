@@ -17,14 +17,46 @@ get '/api/example' do
     { :key1 => 'value1', :key2 => 'value2' }.to_json
 end
 
-#Because fuck models
-class Sources < ActiveRecord::Base
-self.primary_key = :sourceID
-  #We will need to define some logic for sources lateron though
+#DB Model
+class Source < ActiveRecord::Base
+  has_many :likes, as: :likable
+  validates :name, presence: true
+  
+  has_many :history
+  has_many :topics, through: :history
+  has_many :users, through: :history
+
 end
 
+class Topic < ActiveRecord::Base
+  has_many :likes, as: :likable
+  validates :name, presence: true
 
+  has_many :history
+  has_many :sources, through: :history
+  has_many :users, through: :history
+end
 
+class User < ActiveRecord::Base
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 5 }
+  has_many :likes
+
+  has_many :histories
+  has_many :sources, through: :history
+  has_many :topics, through: :history
+end
+
+class Like < ActiveRecord::Base
+  belongs_to :likeable, polymorphic: true
+  belongs_to :users
+end
+
+class History < ActiveRecord::Base
+  belongs_to :sources
+  belongs_to :topics
+  belongs_to :users
+end
 
 __END__
 
