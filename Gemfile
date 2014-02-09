@@ -1,9 +1,49 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'thin'
-gem 'sinatra'
+gem 'rails', '3.2.13'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3'
+
 gem 'pg'
-gem 'json'
-gem 'activerecord'
-gem 'sinatra-activerecord'
-gem 'slim'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+gem 'jbuilder'
+
+# Devise for authentication
+gem 'devise', '= 3.0.4'
+
+#ActiveAdmin administrative interface for a nice GUI interface backend
+#gotta use github branch since the gem is not updated
+gem 'ransack',             github: 'ernie/ransack'
+gem 'activeadmin',         github: 'confirm/active_admin'
+gem 'formtastic',          github: 'justinfrench/formtastic'
+gem 'responders',          github: 'plataformatec/responders'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
