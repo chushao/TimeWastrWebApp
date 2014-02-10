@@ -1,0 +1,9 @@
+createdb timewastr
+psql timewastr
+CREATE ROLE timewastermain with createdb login password 'timewasted';;
+SELECT * from pg_roles;; << TO VERIFY ROLE HAS BEEN CREATED
+
+
+in .bash_profile or .profile add these 2 lines:
+export TWPG_USER=timewastermain
+export TWPG_PASS=timewasted
