@@ -16,8 +16,11 @@ Timewastr::Application.routes.draw do
         delete 'sessions' => 'sessions#destroy', :as => 'logout'
       end
       get 'tasks' => 'tasks#index', :as => 'tasks'
+      get 'tasksauthenticated' => 'tasksauthenticated#index', :as => 'tasksauthenticated'
     end
   end
+
+  
 
 
   # Example of regular route:

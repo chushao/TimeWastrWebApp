@@ -32,12 +32,16 @@ gem 'jbuilder'
 # Devise for authentication
 gem 'devise', '= 3.0.4'
 
+# Ruby version of beautifulsoup kinda
+gem 'mechanize', "~> 2.2.1"
+
 #ActiveAdmin administrative interface for a nice GUI interface backend
 #gotta use github branch since the gem is not updated
 gem 'ransack',             github: 'ernie/ransack'
 gem 'activeadmin',         github: 'confirm/active_admin'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'responders',          github: 'plataformatec/responders'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
