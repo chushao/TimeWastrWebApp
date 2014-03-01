@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20140209211742) do
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
     t.string   "name",                   :default => "", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
