@@ -1,4 +1,4 @@
-cse190webapp
+cse170webapp
 ============
 
-CSE 190 Web App. 
+CSE 170 Web app. 

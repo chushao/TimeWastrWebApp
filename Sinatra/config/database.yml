@@ -1,6 +1,0 @@
-development:
-    adapter: postgresql
-    database: timewastr
-    username: <%= ENV['TWPG_USER'] %>
-    password: <%= ENV['TWPG_PASS'] %>
-    host: localhost
