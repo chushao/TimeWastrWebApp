@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    .loginContent
+        .loginTitle 
+            span balancr
+    .fields
+        .row
+            .col-xs-12
+                form(action='/login', method='post', role="form")
+                    .form-group
+                        label(for='email').radioOption Email
+                        input.form-control(type='email', name='email', id='email', placeholder='Email')
+                    .form-group
+                        label(for='password').radioOption Password
+                        input.form-control(type='password', name='password', id='password', placeholder='Password')
+                    .form-group
+                        input(id='submitBtn', type='submit',value='Log In')
+
+            .col-xs-12.Ta-c
+                span Do't have an account yet? 
+                    a(href="/signup").link.Fw-b Sign Up
+            .col-xs-12.Ta-c
+                span Forgot your password? 
+                    a(href="/resetpassword").link.Fw-b Reset Password
+        hr
+        .row.Ta-c.Fw-b.Mt-neg-30.Mb-20 OR
+        .row
+            .col-xs-12
+                a(href="/auth/facebook")
+                    button.btn.btn-default.W-100
+                        <img src="http://althamarat.net/images/Facebook-Logo-White-on-Blue1.png" width="24" height="24" />
+                        span.signIn.Fw-b Facebook sign in

@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+    script(type="text/javascript", src="/js/jquery-2.1.0.min.js")
+    script(type="text/javascript", src="/js/bootstrap.min.js")
+    script(type="text/javascript", src="/js/Chart.js")
+    script(type="text/javascript", src="/js/analytics.js")
+    script.
+        function utmx_section(){}function utmx(){}(function(){var
+        k='82833015-0',d=document,l=d.location,c=d.cookie;
+        if(l.search.indexOf('utm_expid='+k)>0)return;
+        function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+        indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+        length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+        '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+        '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+        '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+        valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+        '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    script.
+        utmx('url','A/B');
+    meta(name='viewport' content='width=device-width')
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    meta(name='viewport' content='width=240, user-scalable=yes, initial-scale=0.7, maximum-scale=5.0, minimum-scale=1.0' )
+  body
+    nav.navbar.navbar-default.navbar-static-top(role="navigation")
+        .container-fluid
+            .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar-collapse-area")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                .navTitle 
+                    a(href="/workplay").link balancr
+            .collapse.navbar-collapse(id="navbar-collapse-area")
+                ul.nav.navbar-nav
+                    li#workplay
+                        a(href="/workplay") work/play
+                    li#doughnut
+                        a(href="/categories") categories
+                    li#add
+                        a(href="/add") add activity
+                    li#history
+                        a(href="/details/category/all") history
+                    li#statistics
+                        a(href="/statistics") statistics
+                    li#settings
+                        a(href="/settings") settings
+                    li#signout
+                        a(href="/logout") sign out
+    block content
+
+
+    script.
+        $(function() {
+            var pathname = document.location.pathname.split('/')[1];
+            $('#' + pathname).addClass('active');
+        });

@@ -1,0 +1,220 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url('../images/background2.png');
+    background-repeat:no-repeat;
+    display: compact;
+    padding-bottom: 30px;
+}
+
+.link {
+    color: #EAA030;
+}
+.link:hover {
+    color: #EAA030;
+    text-decoration: none;
+}
+
+.page {
+    padding: 0 20px 0 20px;
+}
+
+.heading {
+    font-size: 35px;
+    margin-right: 6px;
+    color: #505050;
+    text-shadow: #7B7B7B 0.05em 0.05em 0.05em;
+}
+
+.pageContent {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.loginContent {
+    margin-top: 70px;
+}
+
+.iconLink {
+    margin-left: 10px;
+}
+
+.percent {
+    font-size: 35px;
+}
+.category {
+    font-size: 18px;
+}
+.subheading {
+    font-size: 18px;
+    color: #EAA030;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.subheading .glyphicon {
+    font-size: 15px;
+}
+
+.navTitle {
+    font-size: 30px;
+    font-family: Olivier;
+    cursor: default;
+    color: #EAA030;
+    margin-left: 20px;
+    margin-right: 60px;
+    margin-top: 8px;
+    text-shadow: #7B7B7B 0.05em 0.05em 0.05em;
+}
+
+.loginTitle {
+    text-align: center;
+    font-size: 60px;
+}
+.loginTitle a {
+    font-family: Olivier;
+    color: #EAA030;
+    text-shadow: #7B7B7B 0.05em 0.05em 0.05em;
+}
+.loginTitle a:hover {
+    text-decoration: none;
+    color: #EAA030;
+}
+.fields {
+    width: 80%;
+    margin-left: 10%;
+}
+.signIn {
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+#canvas {
+    margin-bottom: 10px;
+}
+
+.radioOption {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.activityList {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.activityItem {
+    padding: 10px;
+    background: rgba(255, 255, 255, .7);
+    margin-bottom: 20px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.editSubmit {
+    width: 80px;
+    margin-left: 80%;
+}
+.activityName {
+    font-size: 20px;
+}
+.editActivity {
+    margin-right: 15px;
+    font-size: 18px;
+}
+.deleteActivity {
+    font-size: 18px;
+}
+.delete {
+    margin-right: 10px;
+}
+.removeDate {
+    margin-top: -40px;
+    margin-bottom: 40px;
+    margin-left: 105%;
+}
+.checkbox span {
+    font-size: 17px;
+}
+#doughnutTable td {
+    vertical-align: middle;
+}
+#doughnutTable {
+    width: 90%;
+    margin-left: 5%;
+}
+.color {
+    margin-left: 10%;
+    width: 25px;
+    height: 25px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.statistics {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 18px;
+    text-align: left;
+}
+
+.stat {
+    font-size: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, .7);
+    margin-bottom: 20px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+@font-face {
+	font-family: Olivier;
+	src: url(../fonts/olivier_demo.ttf);
+}
+.W-100 {
+    width: 100%;
+}
+.Ta-c {
+    text-align: center;
+}
+.Ta-start {
+    text-align: left;
+}
+.Ta-end {
+    text-align: right;
+}
+.Fw-b {
+    font-weight: bold;
+}
+.Mstart-5 {
+    margin-left: 5px;
+}
+.Mt-neg-30 {
+    margin-top: -30px;
+}
+.Mb-20 {
+    margin-bottom: 20px;
+}
+.Mb-10 {
+    margin-bottom: 10px;
+}
+.Mstart-neg-5 {
+    margin-left: -5px;
+}
+.Mend-4 {
+    margin-right: 4px;
+}
+.P-2 {
+    padding: 2px;
+}
+.Hidden {
+    display: none;
+}
+.Fz-s {
+    font-size: 13px;
+}
+.Fz-xs {
+    font-size: 11px;
+}
+.Fz-l {
+    font-size: 20px;
+}
+input[type=submit] {
+    font-weight: bold;
+}

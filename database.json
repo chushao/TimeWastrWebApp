@@ -1,0 +1,38 @@
+{
+	"id" : 0,
+	"email" : "c@shao.com",
+	"salt" : "wkSF3tUfzpj5y9PqPVnIgFkxtWmQkRCaIA8blsik6XbYgb0RAeExujSOiF0San7eGjAEJB0iESQf5s8f4kIzkp4GA7UUBQDUDgASKM5NCT9y2dsONE05QSZr1TXHTfjeynfOltUqGXw5OAu2Ko1Rj/Rtd3T1/vUR0WR2lRxrJRU=", 
+	"hash" : "��X$&G��]�g��9��\u0017A�>W��?��V�a#\t�O�{�3 0a�\u0012h�\u0000��|�}��|\u0017��\u001bT0��\u0018��\u0006\u00125_c��aT���&9��\u000e[L.%z�j{�\u0003�8 �J\u00193/.\u000b7�n�\u0011[�\u0013\f\u000b�\u0004͹���NyA1����e�",
+	"username" : "chu",
+	"goals" : {},
+	"activties" : [
+		{
+			"activity" : "Running around",
+			"category" : "Exercise",
+			"timeSpent" : 43,
+			"minutes" : true,
+			"work" : false,
+			"date" : "2014-01-05"
+		},
+		{
+			"activity" : "Walking",
+			"category" : "Exercise",
+			"timeSpent" : 43,
+			"minutes" : false,
+			"work" : false,
+			"date" : "2014-01-05"
+		},
+		{
+			"activity" : "Coding",
+			"category" : "Job",
+			"timeSpent" : 18,
+			"minutes" : false,
+			"work" : true,
+			"date" : "2014-01-06"
+		}
+
+	],
+	"categories" : ["Job", "Exercise", "Fun", "Family"]
+
+
+}
