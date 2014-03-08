@@ -13,7 +13,8 @@
     "passport-facebook": "*",
     "mongodb": "*",
     "mongoose": "*",
-    "connect-flash": "*"
-  
+    "connect-flash": "*",
+    "cheerio": "*",
+    "request": "*"
   }
 }

@@ -3,4 +3,5 @@ db/*.sqlite3
 .DS_Store
 .elasticbeanstalk/
 log/
+node_modules/*
 tmp/*
