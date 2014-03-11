@@ -39,9 +39,10 @@ module.exports = function (app, passport) {
             else {
                 //Successfully registered user
                 //console.log(req.header.host);
+                //TODO don't hardcode
+                var url = process.env.urlpath === 'heroku' ? 'http://timewastr.herokuapp.com' : 'http://localhost:1337/login';
                 request.post( 
-                    //TODO don't hardcode
-                    'http://localhost:1337/login',
+                    url,
                     { form: {email: email,
                             password: password } },
                     function (err, response, body) {
