@@ -9,7 +9,7 @@ var config = require(__dirname + '/config/config.js');
 var app = express();
 app.set('port', process.env.PORT || 1337);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'jade');
 app.set('view options', { layout: false });
 app.use(express.logger());
 app.use(express.bodyParser());
@@ -35,7 +35,7 @@ var Account = require(__dirname +'/models/account');
 //https://github.com/saintedlama/passport-local-mongoose
 passport.use(Account.createStrategy());
 
-mongoose.connect(config.mongo_url);
+mongoose.connect(process.env.MONGOHQ_URL || config.mongo_url);
 require(__dirname +'/routes/routes')(app, passport);
 app.listen(app.get('port'), function() {
     console.log(("Express server listening on port " + app.get('port')));

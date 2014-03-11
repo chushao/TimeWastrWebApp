@@ -19,9 +19,13 @@ Token.statics.hasExpired= function(created) {
 };
 var TokenModel = mongoose.model('Token', Token);
 
+var Article = new Schema( {
+    title : { type: String },
+    articleLink : { type: String }
+});
+
 var Account = new Schema({
-    //TODO: fname, lname, phone, notifications, friends, etc.
-    birthdate: Date,
+    favorites: [Article], //favorite article list 
     email: { type: String, required: true },
     date_created: {type: Date, default: Date.now},
     token: {type: Object},

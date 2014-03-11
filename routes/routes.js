@@ -58,6 +58,10 @@ module.exports = function (app, passport) {
             }
         });
     });
+
+    app.get('/login', function(req, res) {
+        res.render('login');
+    });
     
     app.post('/login',  passport.authenticate('local', {session: false}) , function(req, res) {
         console.log("MOO");
@@ -74,6 +78,79 @@ module.exports = function (app, passport) {
             });
         } else {
             res.json({error: 'AuthError'});
+        }
+    });
+
+    app.get('/favorites/add/:token/', function(req, res) {
+        //Generate a string of /favortes/add/1234.21232/?title=The cat is fat&articleLink=http://www.google.com for parsing
+        var incomingToken = req.params.token;
+        console.log('incomingToken: ' + incomingToken);
+        var decoded = Account.decode(incomingToken);
+        //Now do a lookup on that email in mongodb ... if exists it's a real user
+        if (decoded && decoded.email) {
+            Account.findUser(decoded.email, incomingToken, function(err, user) {
+                if (err) {
+                    console.log(err);
+                    res.json({error: 'Issue finding user.'});
+                } else {
+                    if (Token.hasExpired(user.token.date_created)) {
+                        console.log("Token expired...TODO: Add renew token funcitionality.");
+                        res.json({error: 'Token expired. You need to log in again.'});
+                    } else {
+                        Account.findOne( {email: decoded.email}, function(err, usr) {
+                            usr.favorites.push({
+                                "title" : req.query.title,
+                                "articleLink" : req.query.articleLink
+                            });
+                            usr.save( function(err, data) {
+                                if (err) {
+                                    console.log(err);
+                                    res.json({
+                                        message: err
+                                    });
+                                } else {
+                                    console.log(data);
+                                    res.json({
+                                        message: "Success"
+                                    });
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+        } else {
+            console.log('Whoa! Couldn\'t even decode incoming token!');
+            res.json({error: 'Issue decoding incoming token.'});
+        }
+    });
+
+
+    app.get('/favorites/list/:token', function(req, res) {
+        var incomingToken = req.params.token;
+        console.log('incomingToken: ' + incomingToken);
+        var decoded = Account.decode(incomingToken);
+        //Now do a lookup on that email in mongodb ... if exists it's a real user
+        if (decoded && decoded.email) {
+            Account.findUser(decoded.email, incomingToken, function(err, user) {
+                if (err) {
+                    console.log(err);
+                    res.json({error: 'Issue finding user.'});
+                } else {
+                    if (Token.hasExpired(user.token.date_created)) {
+                        console.log("Token expired...TODO: Add renew token funcitionality.");
+                        res.json({error: 'Token expired. You need to log in again.'});
+                    } else {
+                        Account.findOne( {email: decoded.email}, function(err, usr) {
+                            console.log(usr.favorites);
+                            res.json(usr.favorites);
+                        });
+                    }
+                }
+            });
+        } else {
+            console.log('Whoa! Couldn\'t even decode incoming token!');
+            res.json({error: 'Issue decoding incoming token.'});
         }
     });
 
@@ -108,9 +185,9 @@ module.exports = function (app, passport) {
             res.json({error: 'Issue decoding incoming token.'});
         }
     });
-    app.get('/logout(\\?)?', function(req, res) {
+    app.get('/logout/:token', function(req, res) {
         var messages = flash('Logged out', null);
-        var incomingToken = req.headers.token;
+        var incomingToken = req.params.token;
         console.log('LOGOUT: incomingToken: ' + incomingToken);
         if (incomingToken) {
             var decoded = Account.decode(incomingToken);
