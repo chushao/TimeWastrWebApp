@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>TimeWastr</title>
+	<!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<i>Number of articles: {{number}}</i>
+		{{#each articles}}
+		<div class='container'>
+			<h1>{{title}}</h1>
+			{{#if picture}}
+			<img src="{{picture}}" height="360" width="640">
+			{{/if}}
+			<p><b>Published</b> {{published}}</p>
+			<p><b>Link</b> <i><a href="{{link}}">{{link}}</a></i></p>
+			<p><b>Time to read</b>  <span class="time">{{time}}</span> minutes</p>
+			<blockquote>
+				{{{content}}}
+			</blockquote>
+		</div>
+		{{/each}}
+	</div>
+	 <script src="js/jquery-1.10.2.min.js"></script>
+</body>
+</html>

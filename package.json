@@ -34,6 +34,9 @@
     "jade": "*",
     "underscore": "~1.5.2",
     "crypto": "0.0.3",
-    "request": "*"
+    "request": "*",
+    "handlebars": "*",
+    "feed-read": "*",
+    "cheerio": "*"
   }
 }

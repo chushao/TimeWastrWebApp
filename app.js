@@ -6,10 +6,15 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var config = require(__dirname + '/config/config.js');
 
+//var handlebars = require('handlebars')
+
+
+
 var app = express();
 app.set('port', process.env.PORT || 1337);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
 app.set('view options', { layout: false });
 app.use(express.logger());
 app.use(express.bodyParser());
@@ -27,6 +32,9 @@ app.configure('production', function() {
 });
 
 var Account = require(__dirname +'/models/account');
+
+var article = require('./routes/article');
+app.get('/test', article.timewastr);
 
 //NOTE: createStrategy: Sets up passport-local LocalStrategy with correct options.
 //When using usernameField option to specify alternative usernameField e.g. "email"
