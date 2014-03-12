@@ -1,7 +1,7 @@
 {
-  "name": "node-api-token-template",
+  "name": "cse190webapp",
   "version": "0.0.1",
-  "description": "A template for express, NodeJS, passport, and jwt-simple using API Tokens",
+  "description": "timewastr",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

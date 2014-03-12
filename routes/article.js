@@ -132,10 +132,12 @@ exports.timewastr = function(req, res) {
 			if(DEBUG)console.log("timewastr.end");
 			if(DEBUG)this.timer_end();
 			// Render the articles
+			res.send(this.articles);
+			/**
 			this.res.render('test', {
 				'number': this.count,
 		    	'articles': this.articles
-		    });
+		    }); **/
 		    return;
 		},
 		timer_start: function () {
