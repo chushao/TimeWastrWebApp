@@ -131,13 +131,8 @@ exports.timewastr = function(req, res) {
 		end:  function () {
 			if(DEBUG)console.log("timewastr.end");
 			if(DEBUG)this.timer_end();
-			// Render the articles
-			res.send(this.articles);
-			/**
-			this.res.render('test', {
-				'number': this.count,
-		    	'articles': this.articles
-		    }); **/
+			// Return the articles to the post
+			this.res.send(this.articles);
 		    return;
 		},
 		timer_start: function () {
@@ -207,7 +202,6 @@ function userGenreFeeds(settings) {
 function initializeSettings(req) {
 	if(DEBUG)console.log("initializeSettings");
 	if(DEBUG)console.log("req.body: " + req.body);
-	/*
 	return {
 		time: req.body.time,
 		news: req.body.news == "true",
@@ -216,16 +210,6 @@ function initializeSettings(req) {
 		politics: req.body.politics == "true",
 		tech: req.body.tech == "true"
 	};
-	*/
-	// For Testing
-	return {
-		time: req.body.time = 60,
-		news: req.body.news = true,
-		health: req.body.health = true,
-		finance: req.body.finance = true,
-		politics: req.body.politics = true,
-		tech: req.body.tech = true
-	}
 }
 
 function approximateTime(words) {
