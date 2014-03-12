@@ -33,7 +33,7 @@ app.configure('production', function() {
 var Account = require(__dirname +'/models/account');
 
 var article = require('./routes/article');
-app.get('/timewastr', article.timewastr);
+app.post('/timewastr', article.timewastr);
 
 //NOTE: createStrategy: Sets up passport-local LocalStrategy with correct options.
 //When using usernameField option to specify alternative usernameField e.g. "email"
