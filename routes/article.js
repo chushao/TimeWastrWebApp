@@ -120,7 +120,11 @@ exports.timewastr = function(req, res) {
 				// Increment the count of articles
 				++(that.count);
 				// Decriment this time from the total time
-				that.time = that.time - that.articles[selected.link].time;
+				if (that.time == undefined) { 
+					that.time = 10;
+				} else {
+					that.time = that.time - that.articles[selected.link].time;
+				}
 				if(DEBUG)console.log("time: " + that.time);
 				// Next iteration
 				that.next();
@@ -202,13 +206,20 @@ function userGenreFeeds(settings) {
 function initializeSettings(req) {
 	if(DEBUG)console.log("initializeSettings");
 	if(DEBUG)console.log("req.body: " + req.body);
+
+	var newsBool = req.body.news == undefined ? "true" : req.body.news;
+	var healthBool = req.body.health == undefined ? "true" : req.body.health;
+	var financeBool = req.body.finance == undefined ? "true" : req.body.finance;
+	var politicsBool = req.body.politics == undefined ? "true" : req.body.politics;
+	var techBool = req.body.tech == undefined ? "true" : req.body.tech;
+	
 	return {
-		time: req.body.time,
-		news: req.body.news == "true",
-		health: req.body.health == "true",
-		finance: req.body.finance == "true",
-		politics: req.body.politics == "true",
-		tech: req.body.tech == "true"
+		time: req.body.time == undefined ? 10 : req.body.time,
+		news: newsBool == "true",
+		health: healthBool == "true",
+		finance: financeBool == "true",
+		politics: politicsBool == "true",
+		tech: techBool == "true"
 	};
 }
 

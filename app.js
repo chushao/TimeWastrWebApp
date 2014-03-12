@@ -34,7 +34,7 @@ var Account = require(__dirname +'/models/account');
 
 var article = require('./routes/article');
 app.post('/timewastr', article.timewastr);
-
+app.get('/test', article.timewastr);
 //NOTE: createStrategy: Sets up passport-local LocalStrategy with correct options.
 //When using usernameField option to specify alternative usernameField e.g. "email"
 //passport-local still expects your frontend login form to contain an input with
