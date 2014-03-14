@@ -7,7 +7,6 @@ var Token = require(path.join(__dirname, '..', '/models/account')).Token;
 var flash = require(path.join(__dirname, '..', '/include/utils')).flash;
 var request = require('request');
 
-
 /**
 * @module Routes
 */
@@ -127,6 +126,62 @@ module.exports = function (app, passport) {
     });
 
 
+    app.get('/favorites/remove/:token/', function(req, res) {
+                //Generate a string of /favortes/add/1234.21232/?title=The cat is fat&articleLink=http://www.google.com for parsing
+        var incomingToken = req.params.token;
+        console.log('incomingToken: ' + incomingToken);
+        var decoded = Account.decode(incomingToken);
+        //Now do a lookup on that email in mongodb ... if exists it's a real user
+        if (decoded && decoded.email) {
+            Account.findUser(decoded.email, incomingToken, function(err, user) {
+                if (err) {
+                    console.log(err);
+                    res.json({error: 'Issue finding user.'});
+                } else {
+                    if (Token.hasExpired(user.token.date_created)) {
+                        console.log("Token expired...TODO: Add renew token funcitionality.");
+                        res.json({error: 'Token expired. You need to log in again.'});
+                    } else {
+                        Account.findOne( {email: decoded.email}, function(err, usr) {
+                            var objId = "";
+                            //Because mongoose can go fucking suck it due to their own bug
+                            var x = JSON.parse(JSON.stringify(usr.favorites));
+                            console.log(x.length);
+                            for (var i  = 0; i < x.length; i++) {
+                                console.log(x[i]);
+                                for (var key in x[i]) {
+                                    if(x[i].articleLink === req.query.articleLink) {
+                                        objId = x[i]._id;
+                                    }
+                                } 
+
+                            }
+                            usr.favorites.remove(objId);
+                            usr.save( function(err, data) {
+                                if (err) {
+                                    console.log(err);
+                                    res.json({
+                                        message: err
+                                    });
+                                } else {
+                                    console.log(data);
+                                    res.json({
+                                        message: "Success"
+                                    });
+                                }
+
+                            });
+                        });
+                    }
+                }
+            });
+        } else {
+            console.log('Whoa! Couldn\'t even decode incoming token!');
+            res.json({error: 'Issue decoding incoming token.'});
+        }
+    });
+
+
     app.get('/favorites/list/:token', function(req, res) {
         var incomingToken = req.params.token;
         console.log('incomingToken: ' + incomingToken);
@@ -144,7 +199,16 @@ module.exports = function (app, passport) {
                     } else {
                         Account.findOne( {email: decoded.email}, function(err, usr) {
                             console.log(usr.favorites);
-                            res.json(usr.favorites);
+                            var jsonObj = {};
+                            //gotta convert this shit from an array to a JSON object... fucking mongoose
+                            var str = JSON.parse(JSON.stringify(usr.favorites));
+                            for (var i = 0; i < str.length; i++) {
+                                console.log(str[i]);
+                                jsonObj[i] = str[i];
+                            }
+
+                            console.log("MOO");
+                            res.json(jsonObj);
                         });
                     }
                 }
@@ -154,6 +218,8 @@ module.exports = function (app, passport) {
             res.json({error: 'Issue decoding incoming token.'});
         }
     });
+
+
 
     app.get('/apitest/:token', function(req, res) {
         var incomingToken = req.params.token;

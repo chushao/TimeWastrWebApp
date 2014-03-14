@@ -20,13 +20,14 @@ Token.statics.hasExpired= function(created) {
 var TokenModel = mongoose.model('Token', Token);
 
 var Article = new Schema( {
-    title : { type: String },
-    articleLink : { type: String }
+    articleLink : { type: String, required: true, index: {unique: true} },
+    title : { type: String, required: true, unique: true }
+    
 });
 
 var Account = new Schema({
     favorites: [Article], //favorite article list 
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
     date_created: {type: Date, default: Date.now},
     token: {type: Object},
     //For reset we use a reset token with an expiry (which must be checked)
