@@ -42,8 +42,12 @@ app.get('/test', article.timewastr);
 //https://github.com/saintedlama/passport-local-mongoose
 passport.use(Account.createStrategy());
 
+
 mongoose.connect(process.env.MONGOHQ_URL || config.mongo_url);
 require(__dirname +'/routes/routes')(app, passport);
+app.get('*', function(req, res) {
+	res.json({ error: "invalid path" });
+});
 app.listen(app.get('port'), function() {
     console.log(("Express server listening on port " + app.get('port')));
 });

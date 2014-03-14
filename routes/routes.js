@@ -206,7 +206,6 @@ module.exports = function (app, passport) {
                                 console.log(str[i]);
                                 jsonObj[i] = str[i];
                             }
-
                             console.log("MOO");
                             res.json(jsonObj);
                         });
